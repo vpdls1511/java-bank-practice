@@ -1,5 +1,5 @@
 import io.Input;
-import io.Menu;
+import ui.Menu;
 
 public class BankPracticeApplication {
 
