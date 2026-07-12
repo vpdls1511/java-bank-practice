@@ -9,7 +9,7 @@ public class BankPracticeApplication {
     System.out.println("===============");
 
     while(true) {
-      Menu.list();
+      Menu.render();
       String name = Input.readString();
 
       System.out.println(name);

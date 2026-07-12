@@ -2,7 +2,7 @@ package ui;
 
 public class Menu {
 
-  public static void list() {
+  public static void render() {
     System.out.println("========================\n"
                                + "01. 계좌 생성\n"
                                + "02. 예금 입금\n"
