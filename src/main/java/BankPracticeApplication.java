@@ -1,5 +1,4 @@
 import io.Input;
-import java.util.Scanner;
 
 public class BankPracticeApplication {
 
