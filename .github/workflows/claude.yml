@@ -53,3 +53,5 @@ jobs:
           # Claude Code Max 구독의 OAuth 토큰 (`claude setup-token` 으로 생성)
           claude_code_oauth_token: ${{ secrets.ANTHROPIC_API_KEY }}
           # prompt 를 비워두면 @claude 멘션 내용에 자동으로 응답한다.
+          # 모델 지정: Opus 사용 (Max 구독에 Opus 접근 포함)
+          claude_args: "--model claude-opus-4-8"
