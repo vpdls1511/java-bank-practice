@@ -1,0 +1,98 @@
+name: AI Code Review Action
+description: Review pull request diff using Ollama
+inputs:
+  model:
+    description: Ollama model name
+    required: false
+    default: gemma4:e4b
+  ollama-url:
+    description: Ollama API URL
+    required: false
+    default: http://localhost:11434
+runs:
+  using: composite
+  steps:
+    - name: Extract PR Diff
+      shell: bash
+      run: |
+        git diff origin/${{ github.base_ref }}...origin/${{ github.head_ref }} > pr_diff.txt
+
+    - name: Run Ollama Review
+      shell: bash
+      env:
+        OLLAMA_URL: ${{ inputs.ollama-url }}
+        OLLAMA_MODEL: ${{ inputs.model }}
+      run: |
+        python3 <<'PY'
+        import requests
+        import os
+        import json
+
+        # 파일 읽기
+        try:
+            with open("pr_diff.txt", "r", encoding="utf-8") as f:
+                diff = f.read()
+        except FileNotFoundError:
+            diff = "No diff found or error reading file."
+
+        # 환경 변수에서 값 가져오기 (문법 충돌 방지)
+        ollama_url = os.environ.get("OLLAMA_URL", "http://localhost:11434")
+        model = os.environ.get("OLLAMA_MODEL", "gemma4:e4b")
+
+        prompt = f"""당신은 숙련된 Java 백엔드 시니어 개발자입니다.
+        아래 Pull Request 변경 코드를 리뷰하세요.
+
+        리뷰 기준:
+        - 잠재적인 버그
+        - 트랜잭션 경계 문제
+        - JPA 성능 문제
+        - 동시성 문제
+        - 예외 처리 문제
+        - 유지보수성
+
+        단순 스타일 지적은 제외하고, 실제 장애 가능성이나 개선 가치가 있는 내용만 작성하세요.
+
+        리뷰 결과 형식:
+        ## 리뷰 요약
+
+        ## 발견된 문제
+        - 심각도:
+        - 위치:
+        - 문제:
+        - 영향:
+        - 개선 방향:
+
+        ## 잘 작성된 부분
+
+        변경 코드:
+        {diff}
+        """
+
+        # Ollama API 호출
+        try:
+            response = requests.post(
+                f"{ollama_url}/api/generate",
+                json={
+                    "model": model,
+                    "stream": False,
+                    "prompt": prompt
+                },
+                timeout=300  # 리뷰 시간이 길어질 수 있으므로 타임아웃 설정
+            )
+            response.raise_for_status()
+            result = response.json()
+            review_text = result.get("response", "리뷰 결과를 받지 못했습니다.")
+        except Exception as e:
+            review_text = f"Ollama API 호출 중 오류 발생: {str(e)}"
+
+        # 결과 저장
+        with open("review.md", "w", encoding="utf-8") as f:
+            f.write(review_text)
+        PY
+
+    - name: Comment PR
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        gh pr comment ${{ github.event.pull_request.number }} --body-file review.md
