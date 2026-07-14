@@ -20,6 +20,10 @@ public class Menu {
     System.out.println("생성이 완료되었습니다.");
   }
 
+  public static void inputAccount() {
+    System.out.print("계좌번호를 입력해주세요 : ");
+  }
+
   public static void deposit(String accountNumber) {
     System.out.println("입금하실 금액을 입력 해 주세요.");
     System.out.print("금액 : ");
@@ -48,5 +52,9 @@ public class Menu {
     System.out.println("보유하신 계좌 정보입니다.");
 
     // todo - 시스템 종료
+  }
+
+  public static void retry() {
+    System.out.println("다시 선택해주세요.");
   }
 }
