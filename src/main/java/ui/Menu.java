@@ -48,8 +48,8 @@ public class Menu {
     // todo - 계좌 찾아서 정보 출력
   }
 
-  public static void exitProgram(String accountNumber) {
-    System.out.println("보유하신 계좌 정보입니다.");
+  public static void exitProgram() {
+    System.out.println("프로그램을 종료합니다.");
 
     // todo - 시스템 종료
   }
