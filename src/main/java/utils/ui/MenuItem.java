@@ -1,4 +1,4 @@
-package ui;
+package utils.ui;
 
 public enum MenuItem {
 
