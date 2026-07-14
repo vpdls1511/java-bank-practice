@@ -9,8 +9,15 @@ public class Input {
   public static String readString() {
     return scanner.nextLine();
   }
+
   public static int readInt() {
-    return scanner.nextInt();
+    while(true) {
+      try {
+        return Integer.parseInt(scanner.nextLine().trim());
+      } catch (NumberFormatException exception) {
+        System.out.println("숫자만 입력해주세요.");
+      }
+    }
   }
 
 }
