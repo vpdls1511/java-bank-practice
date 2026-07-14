@@ -1,5 +1,6 @@
 package bank;
 
+import domain.Account;
 import java.math.BigDecimal;
 import utils.io.Input;
 import utils.ui.Menu;
@@ -33,6 +34,9 @@ public class BankController {
 
   private void createAccount() {
     Menu.createAccount();
+    String name = Input.readString();
+    Account account = bankService.createAccount(name);
+    Menu.createAccountComplete(account);
   }
 
   private void deposit() {
