@@ -24,4 +24,14 @@ public enum MenuItem {
   public String getLabel() {
     return this.label;
   }
+
+  public static MenuItem fromCode(int code) {
+    for (MenuItem item : MenuItem.values()) {
+      if(item.code == code) {
+        return item;
+      }
+    }
+
+    return null;
+  }
 }
