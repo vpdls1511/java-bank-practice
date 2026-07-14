@@ -12,8 +12,14 @@ public class BankPracticeApplication {
     while(isRun) {
       Menu.render();
       int code = Input.readInt();
+      MenuItem selectMenu = MenuItem.fromCode(code);
 
-      switch (MenuItem.fromCode(code)) {
+      if(selectMenu == null) {
+        Menu.retry();
+        continue;
+      }
+
+      switch (selectMenu) {
         case CREATE_ACCOUNT -> Menu.createAccount();
         case DEPOSIT -> {
           Menu.inputAccount();
