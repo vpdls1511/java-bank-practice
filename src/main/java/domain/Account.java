@@ -17,6 +17,12 @@ public class Account {
     return this.accountNumber;
   }
 
+  public String toString() {
+    return "이름 : " + this.name
+            + " 계좌번호 : " + this.accountNumber
+            + " 잔액 : " + this.money.toString();
+  }
+
   private String generateAccountNumber() {
     return String.valueOf(System.currentTimeMillis() % 1000000);
   }
