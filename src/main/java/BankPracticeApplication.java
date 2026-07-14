@@ -1,5 +1,6 @@
 import io.Input;
 import ui.Menu;
+import ui.MenuItem;
 
 public class BankPracticeApplication {
 
@@ -7,12 +8,35 @@ public class BankPracticeApplication {
     System.out.println("===============");
     System.out.println("은행 계좌 프로그램");
     System.out.println("===============");
-
-    while(true) {
+    boolean isRun = true;
+    while(isRun) {
       Menu.render();
-      String name = Input.readString();
+      int code = Input.readInt();
+      MenuItem selectMenu = MenuItem.fromCode(code);
 
-      System.out.println(name);
+      if(selectMenu == null) {
+        Menu.retry();
+        continue;
+      }
+
+      switch (selectMenu) {
+        case CREATE_ACCOUNT -> Menu.createAccount();
+        case DEPOSIT -> {
+          Menu.inputAccount();
+          String accountNumber = Input.readString();
+          Menu.deposit(accountNumber);
+        }
+        case WITHDRAW -> {
+          Menu.inputAccount();
+          String accountNumber = Input.readString();
+          Menu.withdraw(accountNumber);
+        }
+        case SHOW_ACCOUNT -> Menu.showAccounts();
+        case EXIT_PROGRAM -> {
+          Menu.exitProgram();
+          isRun = false;
+        }
+      }
     }
   }
 }

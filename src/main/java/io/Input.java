@@ -10,4 +10,14 @@ public class Input {
     return scanner.nextLine();
   }
 
+  public static int readInt() {
+    while(true) {
+      try {
+        return Integer.parseInt(scanner.nextLine().trim());
+      } catch (NumberFormatException exception) {
+        System.out.println("숫자만 입력해주세요.");
+      }
+    }
+  }
+
 }
