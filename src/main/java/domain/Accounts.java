@@ -8,7 +8,7 @@ public class Accounts {
   public void add(Account account) {
     Account[] newAccounts = new Account[accounts.length + 1];
 
-    for (int i = 0 ; i <= accounts.length ; i++) {
+    for (int i = 0 ; i < accounts.length ; i++) {
       newAccounts[i] = accounts[i];
     }
 
