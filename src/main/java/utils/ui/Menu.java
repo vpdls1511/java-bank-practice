@@ -14,7 +14,7 @@ public class Menu {
   }
 
   public static void createAccount() {
-    System.out.println("이름을 입력해 주세요. : ");
+    System.out.print("이름을 입력해 주세요. : ");
   }
 
   public static void createAccountComplete(Account account) {
