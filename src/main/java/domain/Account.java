@@ -19,8 +19,8 @@ public class Account {
 
   public String toString() {
     return "이름 : " + this.name
-            + " 계좌번호 : " + this.accountNumber
-            + " 잔액 : " + this.money.toString();
+            + "\n계좌번호 : " + this.accountNumber
+            + "\n잔액 : " + this.money.toString();
   }
 
   private String generateAccountNumber() {
