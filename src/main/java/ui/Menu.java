@@ -38,7 +38,7 @@ public class Menu {
     System.out.println("출금이 완료되었습니다.");
   }
 
-  public static void showAccounts(String accountNumber) {
+  public static void showAccounts() {
     System.out.println("보유하신 계좌 정보입니다.");
 
     // todo - 계좌 찾아서 정보 출력
