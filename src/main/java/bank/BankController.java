@@ -1,5 +1,6 @@
 package bank;
 
+import java.math.BigDecimal;
 import utils.io.Input;
 import utils.ui.Menu;
 import utils.ui.MenuItem;
@@ -7,6 +8,7 @@ import utils.ui.MenuItem;
 public class BankController {
 
   private static boolean isRun = true;
+  private final BankService bankService = new BankService();
 
   public void run() {
     while(isRun) {
@@ -36,7 +38,9 @@ public class BankController {
   private void deposit() {
     Menu.inputAccount();
     String accountNumber = Input.readString();
-    Menu.deposit(accountNumber);
+    Menu.deposit();
+    bankService.deposit(accountNumber);
+    Menu.depositComplete();
   }
 
   private void withdraw() {
