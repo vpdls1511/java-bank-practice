@@ -10,9 +10,7 @@ public class BankPracticeApplication {
 
     while(true) {
       Menu.render();
-      String name = Input.readString();
-
-      System.out.println(name);
+      int code = Input.readInt();
     }
   }
 }

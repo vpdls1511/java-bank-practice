@@ -9,5 +9,8 @@ public class Input {
   public static String readString() {
     return scanner.nextLine();
   }
+  public static int readInt() {
+    return scanner.nextInt();
+  }
 
 }
