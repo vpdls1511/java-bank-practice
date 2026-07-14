@@ -9,6 +9,8 @@ public class BankPracticeApplication {
     System.out.println("===============");
 
     while(true) {
+    boolean isRun = true;
+    while(isRun) {
       Menu.render();
       int code = Input.readInt();
     }
