@@ -13,6 +13,10 @@ public class Account {
     this.money = BigDecimal.ZERO;
   }
 
+  public String getAccountNumber() {
+    return this.accountNumber;
+  }
+
   private String generateAccountNumber() {
     return String.valueOf(System.currentTimeMillis() % 1000000);
   }
