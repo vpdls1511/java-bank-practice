@@ -1,4 +1,5 @@
 import io.Input;
+import ui.Menu;
 
 public class BankPracticeApplication {
 
@@ -8,6 +9,7 @@ public class BankPracticeApplication {
     System.out.println("===============");
 
     while(true) {
+      Menu.render();
       String name = Input.readString();
 
       System.out.println(name);
