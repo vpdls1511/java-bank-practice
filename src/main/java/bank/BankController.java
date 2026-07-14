@@ -6,11 +6,9 @@ import utils.ui.MenuItem;
 
 public class BankController {
 
+  private static boolean isRun = true;
+
   public void run() {
-    System.out.println("===============");
-    System.out.println("은행 계좌 프로그램");
-    System.out.println("===============");
-    boolean isRun = true;
     while(isRun) {
       Menu.render();
       int code = Input.readInt();
@@ -22,23 +20,34 @@ public class BankController {
       }
 
       switch (selectMenu) {
-        case CREATE_ACCOUNT -> Menu.createAccount();
-        case DEPOSIT -> {
-          Menu.inputAccount();
-          String accountNumber = Input.readString();
-          Menu.deposit(accountNumber);
-        }
-        case WITHDRAW -> {
-          Menu.inputAccount();
-          String accountNumber = Input.readString();
-          Menu.withdraw(accountNumber);
-        }
+        case CREATE_ACCOUNT -> this.createAccount();
+        case DEPOSIT -> this.deposit();
+        case WITHDRAW -> this.withdraw();
         case SHOW_ACCOUNT -> Menu.showAccounts();
-        case EXIT_PROGRAM -> {
-          Menu.exitProgram();
-          isRun = false;
-        }
+        case EXIT_PROGRAM -> this.exitProgram();
       }
     }
   }
+
+  private void createAccount() {
+    Menu.createAccount();
+  }
+
+  private void deposit() {
+    Menu.inputAccount();
+    String accountNumber = Input.readString();
+    Menu.deposit(accountNumber);
+  }
+
+  private void withdraw() {
+    Menu.inputAccount();
+    String accountNumber = Input.readString();
+    Menu.withdraw(accountNumber);
+  }
+
+  private void exitProgram() {
+    Menu.exitProgram();
+    isRun = false;
+  }
+
 }
