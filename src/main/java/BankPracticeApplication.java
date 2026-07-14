@@ -32,8 +32,10 @@ public class BankPracticeApplication {
           Menu.withdraw(accountNumber);
         }
         case SHOW_ACCOUNT -> Menu.showAccounts();
-        case EXIT_PROGRAM -> isRun = false;
-        default -> Menu.retry();
+        case EXIT_PROGRAM -> {
+          Menu.exitProgram();
+          isRun = false;
+        }
       }
     }
   }
