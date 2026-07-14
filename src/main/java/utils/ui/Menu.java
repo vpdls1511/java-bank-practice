@@ -1,5 +1,7 @@
 package utils.ui;
 
+import domain.Account;
+
 public class Menu {
 
   public static void render() {
@@ -12,12 +14,12 @@ public class Menu {
   }
 
   public static void createAccount() {
-    System.out.println("아래 정보를 입력해 주세요.");
-    System.out.print("이름 : ");
+    System.out.println("이름을 입력해 주세요. : ");
+  }
 
-    // todo - 이름을 넘겨서 account 객체 생성
-
+  public static void createAccountComplete(Account account) {
     System.out.println("생성이 완료되었습니다.");
+    System.out.println(account.toString());
   }
 
   public static void inputAccount() {
