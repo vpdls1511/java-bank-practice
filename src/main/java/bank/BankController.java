@@ -8,7 +8,7 @@ import utils.ui.MenuItem;
 
 public class BankController {
 
-  private static boolean isRun = true;
+  private boolean isRun = true;
   private final BankService bankService = new BankService();
 
   public void run() {

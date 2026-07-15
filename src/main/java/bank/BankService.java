@@ -5,7 +5,7 @@ import domain.Accounts;
 
 public class BankService {
 
-  private static Accounts accounts = new Accounts();
+  private Accounts accounts = new Accounts();
 
   public Account createAccount(String name) {
     Account account = new Account(name);
