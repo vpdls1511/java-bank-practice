@@ -52,7 +52,7 @@ public class BankController {
     String accountNumber = Input.readString();
     Menu.withdraw();
     long money = (long) Input.readInt();
-    bankService.withdrawn(accountNumber, money);
+    bankService.withdraw(accountNumber, money);
     Menu.withdrawComplete();
   }
 

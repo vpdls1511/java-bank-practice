@@ -46,11 +46,11 @@ public class Account {
   /**
    * 출금
    */
-  public void withdrawn(long money) {
-    this.withdrawn(BigDecimal.valueOf(money));
+  public void withdraw(long money) {
+    this.withdraw(BigDecimal.valueOf(money));
   }
 
-  public void withdrawn(BigDecimal money) {
+  public void withdraw(BigDecimal money) {
     if (money.signum() <= 0) {
       throw new IllegalArgumentException("출금 금액은 0보다 커야합니다.");
     }

@@ -40,24 +40,24 @@ class AccountTest {
   }
 
   @Test
-  void withdrawnMoney() {
+  void withdrawMoney() {
     long  money = 10000L;
     String name = "Green";
     Account account = new Account(name);
 
     account.deposit(money);
-    account.withdrawn(money);
+    account.withdraw(money);
 
     assertEquals(BigDecimal.valueOf(0L), account.getMoney());
   }
 
   @Test
-  void withdrawnMoneyByIllegalArgumentException() {
+  void withdrawMoneyByIllegalArgumentException() {
     long  money = 10000L;
     String name = "Green";
     Account account = new Account(name);
 
     assertThrows(IllegalArgumentException.class,
-                 () -> account.withdrawn(money));
+                 () -> account.withdraw(money));
   }
 }

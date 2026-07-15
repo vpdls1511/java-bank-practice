@@ -36,24 +36,24 @@ class BankServiceTest {
   }
 
   @Test
-  void canWithdrawnMoney() {
+  void canWithdrawMoney() {
     long money = 10000L;
     Account myAccount = bankService.createAccount("Green");
 
     bankService.deposit(myAccount.getAccountNumber(), money);
-    bankService.withdrawn(myAccount.getAccountNumber(), money);
+    bankService.withdraw(myAccount.getAccountNumber(), money);
 
     assertEquals(BigDecimal.ZERO, account.getMoney());
   }
 
   @Test
-  void canWithdrawnMoneyByIllegalArgumentException() {
+  void canWithdrawMoneyByIllegalArgumentException() {
     long money = 10000L;
     Account myAccount = bankService.createAccount("Green");
 
     bankService.deposit(myAccount.getAccountNumber(), money);
 
     assertThrows(IllegalArgumentException.class,
-                 () -> bankService.withdrawn(myAccount.getAccountNumber(), money + money));
+                 () -> bankService.withdraw(myAccount.getAccountNumber(), money + money));
   }
 }
