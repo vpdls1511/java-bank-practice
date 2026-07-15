@@ -16,20 +16,12 @@ public class BankService {
   }
 
   public void deposit(String accountNumber, long money) {
-    if(accounts.size() <= 0) {
-      throw new NoSuchElementException("계좌 목록이 비어있습니다.");
-    }
-
     Account account = accounts.get(accountNumber);
     account.deposit(money);
   }
 
 
   public void withdraw(String accountNumber, long money) {
-    if(accounts.size() <= 0) {
-      throw new NoSuchElementException("계좌 목록이 비어있습니다.");
-    }
-
     Account account = accounts.get(accountNumber);
     account.withdraw(money);
   }
