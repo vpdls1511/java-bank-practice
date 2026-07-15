@@ -18,17 +18,6 @@ class AccountTest {
   }
 
   @Test
-  void depositMoneyToString() {
-    String money = "10000";
-    String name = "Green";
-    Account account = new Account(name);
-
-    account.deposit(money);
-
-    assertEquals(BigDecimal.valueOf(10000), account.getMoney());
-  }
-
-  @Test
   void depositMoneyToLong() {
     long  money = 10000L;
     String name = "Green";

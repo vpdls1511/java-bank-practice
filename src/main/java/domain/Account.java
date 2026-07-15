@@ -32,10 +32,6 @@ public class Account {
     deposit(BigDecimal.valueOf(money));
   }
 
-  public void deposit(String money) {
-    deposit(new BigDecimal(money));
-  }
-
   public void deposit(BigDecimal money) {
     if (money.signum() <= 0) {
       throw new IllegalArgumentException("입금 금액은 0보다 커야합니다.");
