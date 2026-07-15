@@ -25,6 +25,39 @@ public class Account {
     return this.money;
   }
 
+  /**
+   * 입금
+   */
+  public void deposit(long money) {
+    deposit(BigDecimal.valueOf(money));
+  }
+
+  public void deposit(BigDecimal money) {
+    if (money.signum() <= 0) {
+      throw new IllegalArgumentException("입금 금액은 0보다 커야합니다.");
+    }
+    this.money = this.money.add(money);
+  }
+
+  /**
+   * 출금
+   */
+  public void withdraw(long money) {
+    this.withdraw(BigDecimal.valueOf(money));
+  }
+
+  public void withdraw(BigDecimal money) {
+    if (money.signum() <= 0) {
+      throw new IllegalArgumentException("출금 금액은 0보다 커야합니다.");
+    }
+
+    if (this.money.compareTo(money) < 0) {
+      throw new IllegalArgumentException("출금 한도가 부족합니다.");
+    }
+
+    this.money = this.money.subtract(money);
+  }
+
   @Override
   public String toString() {
     return "이름 : " + this.name

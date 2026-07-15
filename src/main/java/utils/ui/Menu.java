@@ -34,12 +34,11 @@ public class Menu {
     System.out.println("입금이 완료되었습니다.");
   }
 
-  public static void withdraw(String accountNumber) {
-    System.out.println("출금하실 금액을 입력 해 주세요.");
-    System.out.print("금액 : ");
+  public static void withdraw() {
+    System.out.print("출금하실 금액을 입력 해 주세요 : ");
+  }
 
-    // todo - 계좌 찾고, 출금 가능한지 검증
-
+  public static void withdrawComplete() {
     System.out.println("출금이 완료되었습니다.");
   }
 

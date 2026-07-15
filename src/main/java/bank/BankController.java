@@ -42,14 +42,18 @@ public class BankController {
     Menu.inputAccount();
     String accountNumber = Input.readString();
     Menu.deposit();
-    bankService.deposit(accountNumber);
+    long money = Input.readInt();
+    bankService.deposit(accountNumber, money);
     Menu.depositComplete();
   }
 
   private void withdraw() {
     Menu.inputAccount();
     String accountNumber = Input.readString();
-    Menu.withdraw(accountNumber);
+    Menu.withdraw();
+    long money = Input.readInt();
+    bankService.withdraw(accountNumber, money);
+    Menu.withdrawComplete();
   }
 
   private void exitProgram() {

@@ -1,16 +1,18 @@
+package domain;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import domain.Account;
-import domain.Accounts;
+import java.math.BigDecimal;
 import java.util.NoSuchElementException;
 import org.junit.jupiter.api.Test;
 
 class AccountsTest {
 
-  private Accounts accounts = new Accounts();
+  private final Accounts accounts = new Accounts();
+  private final Account existAccount = new Account("그린");
 
   @Test
   void addAccount() {
@@ -19,7 +21,7 @@ class AccountsTest {
 
     accounts.add(account);
 
-    assertTrue(accounts.size() != 0);
+    assertTrue(accounts.size() > 0);
   }
 
   @Test
@@ -37,6 +39,7 @@ class AccountsTest {
   @Test
   void getAccountByNumber() {
     Account account = new Account("Green");
+
     accounts.add(account);
 
     assertEquals(account, accounts.get(account.getAccountNumber()));
@@ -60,6 +63,28 @@ class AccountsTest {
   void getAccountByNumberNotFound() {
     assertThrows(NoSuchElementException.class,
                  () -> accounts.get("000000"));
+  }
+
+  @Test
+  void canGetAccount() {
+    accounts.add(existAccount);
+
+    String accountNumber = existAccount.getAccountNumber();
+    Account account = accounts.get(accountNumber);
+
+    assertEquals(existAccount.getName(), account.getName());
+  }
+
+  @Test
+  void canGetAccountDeposit() {
+    accounts.add(existAccount);
+
+    String accountNumber = existAccount.getAccountNumber();
+    Account account = accounts.get(accountNumber);
+
+    account.deposit(1000L);
+
+    assertEquals(BigDecimal.valueOf(1000), existAccount.getMoney());
   }
 
 }

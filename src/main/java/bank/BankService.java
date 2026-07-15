@@ -2,6 +2,7 @@ package bank;
 
 import domain.Account;
 import domain.Accounts;
+import java.util.NoSuchElementException;
 
 public class BankService {
 
@@ -14,7 +15,14 @@ public class BankService {
     return account;
   }
 
-  public void deposit(String accountNumber) {
-    // todo - 다음 기능들 feat/deposit 이후 브랜치에서 작업 예정
+  public void deposit(String accountNumber, long money) {
+    Account account = accounts.get(accountNumber);
+    account.deposit(money);
+  }
+
+
+  public void withdraw(String accountNumber, long money) {
+    Account account = accounts.get(accountNumber);
+    account.withdraw(money);
   }
 }
