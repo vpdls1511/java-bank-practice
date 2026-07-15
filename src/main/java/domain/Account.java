@@ -25,6 +25,7 @@ public class Account {
     return this.money;
   }
 
+  @Override
   public String toString() {
     return "이름 : " + this.name
             + "\n계좌번호 : " + this.accountNumber
