@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.NoSuchElementException;
+
 public class Accounts {
   private Account[] accounts = {};
 
@@ -29,7 +31,7 @@ public class Accounts {
       }
     }
 
-    return null;
+    throw new NoSuchElementException("계좌 정보를 조회하지 못했습니다.");
   }
 
   public int size() {
