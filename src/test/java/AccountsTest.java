@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import domain.Account;
 import domain.Accounts;
+import java.util.NoSuchElementException;
 import org.junit.jupiter.api.Test;
 
 class AccountsTest {
@@ -34,6 +35,14 @@ class AccountsTest {
   }
 
   @Test
+  void getAccountByNumber() {
+    Account account = new Account("Green");
+    accounts.add(account);
+
+    assertEquals(account, accounts.get(account.getAccountNumber()));
+  }
+
+  @Test
   void overGetAccount() throws IndexOutOfBoundsException {
     String name = "Green";
     Account account = new Account(name);
@@ -45,6 +54,12 @@ class AccountsTest {
 
     assertThrows(IndexOutOfBoundsException.class,
                  () -> accounts.get(-1));
+  }
+
+  @Test
+  void getAccountByNumberNotFound() {
+    assertThrows(NoSuchElementException.class,
+                 () -> accounts.get("000000"));
   }
 
 }
