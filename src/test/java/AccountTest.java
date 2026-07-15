@@ -1,4 +1,5 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import domain.Account;
 import java.math.BigDecimal;
@@ -13,5 +14,49 @@ class AccountTest {
 
     assertEquals(name, account.getName());
     assertEquals(BigDecimal.ZERO, account.getMoney());
+  }
+
+  @Test
+  void depositMoneyToString() {
+    String money = "10000";
+    String name = "Green";
+    Account account = new Account(name);
+
+    account.deposit(money);
+
+    assertEquals(BigDecimal.valueOf(Double.parseDouble("10000")), account.getMoney());
+  }
+
+  @Test
+  void depositMoneyToLong() {
+    long  money = 10000L;
+    String name = "Green";
+    Account account = new Account(name);
+
+    account.deposit(money);
+
+    assertEquals(BigDecimal.valueOf(10000L), account.getMoney());
+  }
+
+  @Test
+  void withdrawnMoney() {
+    long  money = 10000L;
+    String name = "Green";
+    Account account = new Account(name);
+
+    account.deposit(money);
+    account.withdrawn(money);
+
+    assertEquals(BigDecimal.valueOf(0L), account.getMoney());
+  }
+
+  @Test
+  void withdrawnMoneyByArithmeticException() {
+    long  money = 10000L;
+    String name = "Green";
+    Account account = new Account(name);
+
+    assertThrows(ArithmeticException.class,
+                 () -> account.withdrawn(money));
   }
 }
