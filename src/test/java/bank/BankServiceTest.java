@@ -43,14 +43,14 @@ class BankServiceTest {
     bankService.deposit(myAccount.getAccountNumber(), money);
     bankService.withdraw(myAccount.getAccountNumber(), money);
 
-    assertEquals(BigDecimal.ZERO, account.getMoney());
+    assertEquals(BigDecimal.ZERO, myAccount.getMoney());
   }
 
   @Test
   void canDepositNegativeMoneyByIllegalArgumentException() {
     long money = -10000L;
     Account myAccount = bankService.createAccount("Green");
-    
+
     assertThrows(IllegalArgumentException.class,
                  () -> bankService.deposit(myAccount.getAccountNumber(), money));
   }
