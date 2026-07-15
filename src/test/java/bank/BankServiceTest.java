@@ -45,8 +45,7 @@ class BankServiceTest {
     Account myAccount = bankService.createAccount("Green");
 
     bankService.deposit(myAccount.getAccountNumber(), money);
-    myAccount.deposit(money);
-    myAccount.withdrawn(money);
+    bankService.withdrawn(myAccount.getAccountNumber(), money);
 
     assertEquals(BigDecimal.ZERO, account.getMoney());
   }
@@ -56,9 +55,8 @@ class BankServiceTest {
     long money = 10000L;
     Account myAccount = bankService.createAccount("Green");
 
-    bankService.deposit(account.getAccountNumber(), money);
-    myAccount.deposit(money);
-    myAccount.withdrawn(money);
+    bankService.deposit(myAccount.getAccountNumber(), money);
+    bankService.withdrawn(myAccount.getAccountNumber(), money);
 
     assertEquals(BigDecimal.ZERO, account.getMoney());
   }
