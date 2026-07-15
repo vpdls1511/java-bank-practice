@@ -17,7 +17,8 @@ public class Accounts {
     accounts = newAccounts;
   }
 
-  public Account get(int i) {
+  public Account get(int i) throws IndexOutOfBoundsException {
+    if (accounts.length - 1 < i || i < 0) throw new IndexOutOfBoundsException("조회를 할 수 없습니다.");
     return accounts[i];
   }
 
