@@ -4,11 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import domain.Account;
-import domain.Accounts;
-import java.io.BufferedReader;
-import java.io.StringReader;
 import java.math.BigDecimal;
-import java.rmi.NoSuchObjectException;
 import java.util.NoSuchElementException;
 import org.junit.jupiter.api.Test;
 
@@ -51,7 +47,7 @@ class BankServiceTest {
   }
 
   @Test
-  void canWithdrawnMoneyByArithmeticException() {
+  void canWithdrawnMoneyByIllegalArgumentException() {
     long money = 10000L;
     Account myAccount = bankService.createAccount("Green");
 

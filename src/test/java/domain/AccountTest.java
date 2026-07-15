@@ -52,12 +52,12 @@ class AccountTest {
   }
 
   @Test
-  void withdrawnMoneyByArithmeticException() {
+  void withdrawnMoneyByIllegalArgumentException() {
     long  money = 10000L;
     String name = "Green";
     Account account = new Account(name);
 
-    assertThrows(ArithmeticException.class,
+    assertThrows(IllegalArgumentException.class,
                  () -> account.withdrawn(money));
   }
 }

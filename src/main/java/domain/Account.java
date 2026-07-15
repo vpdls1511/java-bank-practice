@@ -38,7 +38,7 @@ public class Account {
 
   public void deposit(BigDecimal money) {
     if (money.signum() <= 0) {
-      throw new ArithmeticException("입금 금액은 0보다 커야합니다.");
+      throw new IllegalArgumentException("입금 금액은 0보다 커야합니다.");
     }
     this.money = this.money.add(money);
   }
@@ -52,11 +52,11 @@ public class Account {
 
   public void withdrawn(BigDecimal money) {
     if (money.signum() <= 0) {
-      throw new ArithmeticException("출금 금액은 0보다 커야합니다.");
+      throw new IllegalArgumentException("출금 금액은 0보다 커야합니다.");
     }
 
     if (this.money.compareTo(money) < 0) {
-      throw new ArithmeticException("출금 한도가 부족합니다.");
+      throw new IllegalArgumentException("출금 한도가 부족합니다.");
     }
 
     this.money = this.money.subtract(money);
