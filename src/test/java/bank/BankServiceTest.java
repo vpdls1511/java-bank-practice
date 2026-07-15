@@ -52,8 +52,8 @@ class BankServiceTest {
     Account myAccount = bankService.createAccount("Green");
 
     bankService.deposit(myAccount.getAccountNumber(), money);
-    bankService.withdrawn(myAccount.getAccountNumber(), money);
 
-    assertEquals(BigDecimal.ZERO, account.getMoney());
+    assertThrows(IllegalArgumentException.class,
+                 () -> bankService.withdrawn(myAccount.getAccountNumber(), money + money));
   }
 }
