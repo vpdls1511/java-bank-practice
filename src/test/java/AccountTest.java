@@ -24,7 +24,7 @@ class AccountTest {
 
     account.deposit(money);
 
-    assertEquals(BigDecimal.valueOf(Double.parseDouble("10000")), account.getMoney());
+    assertEquals(BigDecimal.valueOf(10000), account.getMoney());
   }
 
   @Test
