@@ -2,6 +2,8 @@ package bank;
 
 import domain.Account;
 import domain.Accounts;
+import java.util.NoSuchElementException;
+import utils.io.Input;
 
 public class BankService {
 
@@ -14,7 +16,22 @@ public class BankService {
     return account;
   }
 
-  public void deposit(String accountNumber) {
-    // todo - 다음 기능들 feat/deposit 이후 브랜치에서 작업 예정
+  public void deposit(String accountNumber, long money) {
+    if(accounts.size() <= 0) {
+      throw new NoSuchElementException("계좌 목록이 비어있습니다.");
+    }
+
+    Account account = accounts.get(accountNumber);
+    account.deposit(money);
+  }
+
+
+  public void withdrawn(String accountNumber, long money) {
+    if(accounts.size() <= 0) {
+      throw new NoSuchElementException("계좌 목록이 비어있습니다.");
+    }
+
+    Account account = accounts.get(accountNumber);
+    account.withdrawn(money);
   }
 }

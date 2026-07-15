@@ -42,7 +42,8 @@ public class BankController {
     Menu.inputAccount();
     String accountNumber = Input.readString();
     Menu.deposit();
-    bankService.deposit(accountNumber);
+
+    bankService.deposit(accountNumber, 10000L);
     Menu.depositComplete();
   }
 
