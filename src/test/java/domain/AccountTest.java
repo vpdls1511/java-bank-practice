@@ -1,7 +1,8 @@
+package domain;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import domain.Account;
 import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
 
