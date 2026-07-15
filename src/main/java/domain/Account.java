@@ -13,8 +13,16 @@ public class Account {
     this.money = BigDecimal.ZERO;
   }
 
+  public String getName() {
+    return this.name;
+  }
+
   public String getAccountNumber() {
     return this.accountNumber;
+  }
+
+  public BigDecimal getMoney() {
+    return this.money;
   }
 
   public String toString() {
