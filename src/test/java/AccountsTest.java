@@ -1,5 +1,6 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import domain.Account;
@@ -21,7 +22,7 @@ class AccountsTest {
   }
 
   @Test
-  void getAccount() {
+  void getAccount() throws IndexOutOfBoundsException {
     String name = "Green";
     Account account = new Account(name);
 
@@ -30,6 +31,17 @@ class AccountsTest {
 
     assertEquals(getAccount, account);
     assertNotNull(getAccount.getAccountNumber());
+  }
+
+  @Test
+  void overGetAccount() throws IndexOutOfBoundsException {
+    String name = "Green";
+    Account account = new Account(name);
+
+    accounts.add(account);
+
+    assertThrows(IndexOutOfBoundsException.class,
+                 () -> accounts.get(1));
   }
 
 }
