@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.StringReader;
 import java.math.BigDecimal;
 import java.rmi.NoSuchObjectException;
+import java.util.NoSuchElementException;
 import org.junit.jupiter.api.Test;
 
 class BankServiceTest {
@@ -18,13 +19,13 @@ class BankServiceTest {
 
   @Test
   void noSuchAccounts() {
-    assertThrows(NoSuchObjectException.class,
+    assertThrows(NoSuchElementException.class,
                  () -> bankService.deposit(account.getAccountNumber(), 1000L));
   }
 
   @Test
   void noSuchAccountNumber() {
-    assertThrows(NoSuchObjectException.class,
+    assertThrows(NoSuchElementException.class,
                  () -> bankService.deposit("10a0d0", 1000L));
   }
 
