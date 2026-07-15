@@ -30,4 +30,8 @@ public class Accounts {
 
     return null;
   }
+
+  public int size() {
+    return accounts.length;
+  }
 }
