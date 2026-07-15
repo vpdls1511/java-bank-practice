@@ -42,6 +42,9 @@ class AccountsTest {
 
     assertThrows(IndexOutOfBoundsException.class,
                  () -> accounts.get(1));
+
+    assertThrows(IndexOutOfBoundsException.class,
+                 () -> accounts.get(-1));
   }
 
 }
