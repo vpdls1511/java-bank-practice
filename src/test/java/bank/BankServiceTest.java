@@ -47,6 +47,26 @@ class BankServiceTest {
   }
 
   @Test
+  void canDepositNegativeMoneyByIllegalArgumentException() {
+    long money = -10000L;
+    Account myAccount = bankService.createAccount("Green");
+    
+    assertThrows(IllegalArgumentException.class,
+                 () -> bankService.deposit(myAccount.getAccountNumber(), money));
+  }
+
+  @Test
+  void canWithdrawNegativeMoneyByIllegalArgumentException() {
+    long money = 10000L;
+    Account myAccount = bankService.createAccount("Green");
+
+    bankService.deposit(myAccount.getAccountNumber(), money);
+
+    assertThrows(IllegalArgumentException.class,
+                 () -> bankService.withdraw(myAccount.getAccountNumber(), -money + -money));
+  }
+
+  @Test
   void canWithdrawMoneyByIllegalArgumentException() {
     long money = 10000L;
     Account myAccount = bankService.createAccount("Green");
