@@ -1,7 +1,6 @@
 package bank;
 
 import domain.Account;
-import java.math.BigDecimal;
 import utils.io.Input;
 import utils.ui.Menu;
 import utils.ui.MenuItem;
