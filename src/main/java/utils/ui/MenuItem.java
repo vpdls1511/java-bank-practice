@@ -27,7 +27,7 @@ public enum MenuItem {
 
   public static MenuItem fromCode(int code) {
     for (MenuItem item : MenuItem.values()) {
-      if(item.code == code) {
+      if (item.code == code) {
         return item;
       }
     }

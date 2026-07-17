@@ -87,4 +87,35 @@ class AccountsTest {
     assertEquals(BigDecimal.valueOf(1000), existAccount.getMoney());
   }
 
+  @Test
+  void canGetAllAccounts() {
+    Account first = new Account("first");
+    Account second = new Account("second");
+    accounts.add(first);
+    accounts.add(second);
+
+    Account[] result = accounts.getAll();
+
+    assertEquals(2, result.length);
+    assertEquals(first, result[0]);
+    assertEquals(second, result[1]);
+  }
+
+  @Test
+  void getAccountsLengthZero() {
+    Account[] accountList = accounts.getAll();
+
+    assertEquals(0, accountList.length);
+  }
+
+  @Test
+  void getAllReturnsDefensiveCopy() {
+    accounts.add(existAccount);
+
+    Account[] result = accounts.getAll();
+    result[0] = null;
+
+    assertEquals(existAccount, accounts.get(0));
+  }
+
 }

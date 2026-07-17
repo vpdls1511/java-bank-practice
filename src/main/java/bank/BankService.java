@@ -25,4 +25,9 @@ public class BankService {
     Account account = accounts.get(accountNumber);
     account.withdraw(money);
   }
+
+  public Account[] getAllAccounts() {
+    return accounts.getAll();
+  }
+
 }

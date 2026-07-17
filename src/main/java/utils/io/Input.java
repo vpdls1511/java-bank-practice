@@ -11,7 +11,7 @@ public class Input {
   }
 
   public static int readInt() {
-    while(true) {
+    while (true) {
       try {
         return Integer.parseInt(scanner.nextLine().trim());
       } catch (NumberFormatException exception) {

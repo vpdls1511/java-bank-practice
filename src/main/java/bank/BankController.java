@@ -11,12 +11,12 @@ public class BankController {
   private final BankService bankService = new BankService();
 
   public void run() {
-    while(isRun) {
+    while (isRun) {
       Menu.render();
       int code = Input.readInt();
       MenuItem selectMenu = MenuItem.fromCode(code);
 
-      if(selectMenu == null) {
+      if (selectMenu == null) {
         Menu.retry();
         continue;
       }
@@ -25,7 +25,7 @@ public class BankController {
         case CREATE_ACCOUNT -> this.createAccount();
         case DEPOSIT -> this.deposit();
         case WITHDRAW -> this.withdraw();
-        case SHOW_ACCOUNT -> Menu.showAccounts();
+        case SHOW_ACCOUNT -> this.showAccounts();
         case EXIT_PROGRAM -> this.exitProgram();
       }
     }
@@ -54,6 +54,11 @@ public class BankController {
     long money = Input.readInt();
     bankService.withdraw(accountNumber, money);
     Menu.withdrawComplete();
+  }
+
+  private void showAccounts() {
+    Account[] accounts = bankService.getAllAccounts();
+    Menu.showAccounts(accounts);
   }
 
   private void exitProgram() {
