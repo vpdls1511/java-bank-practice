@@ -99,4 +99,11 @@ class AccountsTest {
     assertEquals(4, accounts1.length);
   }
 
+  @Test
+  void getAccountsLengthZero() {
+    Account[] accountList = accounts.getAll();
+
+    assertEquals(0, accountList.length);
+  }
+
 }
