@@ -9,6 +9,8 @@ import utils.ui.MenuItem;
 
 public class BankController {
 
+  private static final int RETRY_COUNT = 3;
+
   private boolean isRun = true;
   private final BankService bankService = new BankService();
 
@@ -45,7 +47,7 @@ public class BankController {
 
     while (true) {
       try {
-        if (retryCount == 3) {
+        if (retryCount == RETRY_COUNT) {
           Log.stopProcess();
           return;
         }
@@ -70,7 +72,7 @@ public class BankController {
 
     while (true) {
       try {
-        if (retryCount == 3) {
+        if (retryCount == RETRY_COUNT) {
           Log.stopProcess();
           return;
         }
