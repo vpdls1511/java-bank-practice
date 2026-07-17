@@ -7,6 +7,7 @@ public class Log {
   }
 
   public static void retry(Exception e) {
-    System.out.println(e.getMessage());
+    String message = e.getMessage();
+    System.out.println(message == null ? "다시 시도해주세요." : message);
   }
 }
