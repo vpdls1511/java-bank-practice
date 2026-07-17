@@ -52,13 +52,10 @@ public class Menu {
     for(Account account : accounts) {
       System.out.println(account);
     }
-    // todo - 계좌 찾아서 정보 출력
   }
 
   public static void exitProgram() {
     System.out.println("프로그램을 종료합니다.");
-
-    // todo - 시스템 종료
   }
 
   public static void retry() {
