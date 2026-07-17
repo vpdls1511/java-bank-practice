@@ -89,14 +89,16 @@ class AccountsTest {
 
   @Test
   void canGetAllAccounts() {
-    accounts.add(existAccount);
-    accounts.add(existAccount);
-    accounts.add(existAccount);
-    accounts.add(existAccount);
+    Account first = new Account("first");
+    Account second = new Account("second");
+    accounts.add(first);
+    accounts.add(second);
 
-    Account[] accounts1 = accounts.getAll();
+    Account[] result = accounts.getAll();
 
-    assertEquals(4, accounts1.length);
+    assertEquals(2, result.length);
+    assertEquals(first, result[0]);
+    assertEquals(second, result[1]);
   }
 
   @Test
@@ -104,6 +106,16 @@ class AccountsTest {
     Account[] accountList = accounts.getAll();
 
     assertEquals(0, accountList.length);
+  }
+
+  @Test
+  void getAllReturnsDefensiveCopy() {
+    accounts.add(existAccount);
+
+    Account[] result = accounts.getAll();
+    result[0] = null;
+
+    assertEquals(existAccount, accounts.get(0));
   }
 
 }
