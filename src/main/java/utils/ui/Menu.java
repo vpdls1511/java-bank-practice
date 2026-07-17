@@ -43,10 +43,14 @@ public class Menu {
   }
 
   public static void showAccounts(Account[] accounts) {
-    System.out.println("보유하신 계좌 정보입니다.");
+    if(accounts.length <= 0) {
+      System.out.println("보유하신 계좌 정보가 없습니다.");
+      return;
+    }
 
+    System.out.println("보유하신 계좌 정보입니다.");
     for(Account account : accounts) {
-      System.out.println(account.toString());
+      System.out.println(account);
     }
     // todo - 계좌 찾아서 정보 출력
   }
