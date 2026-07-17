@@ -3,6 +3,7 @@ package bank;
 import domain.Account;
 import domain.Accounts;
 import java.util.NoSuchElementException;
+import utils.ui.Log;
 
 public class BankService {
 
