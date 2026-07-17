@@ -39,6 +39,6 @@ public class Accounts {
   }
 
   public Account[] getAll() {
-    return this.accounts;
+    return this.accounts.clone();
   }
 }
