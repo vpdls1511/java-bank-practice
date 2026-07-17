@@ -37,4 +37,8 @@ public class Accounts {
   public int size() {
     return accounts.length;
   }
+
+  public Account[] getAll() {
+    return this.accounts;
+  }
 }
