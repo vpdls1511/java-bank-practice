@@ -42,9 +42,12 @@ public class Menu {
     System.out.println("출금이 완료되었습니다.");
   }
 
-  public static void showAccounts() {
+  public static void showAccounts(Account[] accounts) {
     System.out.println("보유하신 계좌 정보입니다.");
 
+    for(Account account : accounts) {
+      System.out.println(account.toString());
+    }
     // todo - 계좌 찾아서 정보 출력
   }
 
