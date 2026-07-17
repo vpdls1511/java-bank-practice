@@ -19,7 +19,7 @@ class AccountTest {
 
   @Test
   void depositMoneyToLong() {
-    long  money = 10000L;
+    long money = 10000L;
     String name = "Green";
     Account account = new Account(name);
 
@@ -30,7 +30,7 @@ class AccountTest {
 
   @Test
   void withdrawMoney() {
-    long  money = 10000L;
+    long money = 10000L;
     String name = "Green";
     Account account = new Account(name);
 
@@ -42,7 +42,7 @@ class AccountTest {
 
   @Test
   void withdrawMoneyByIllegalArgumentException() {
-    long  money = 10000L;
+    long money = 10000L;
     String name = "Green";
     Account account = new Account(name);
 

@@ -11,12 +11,12 @@ public class BankController {
   private final BankService bankService = new BankService();
 
   public void run() {
-    while(isRun) {
+    while (isRun) {
       Menu.render();
       int code = Input.readInt();
       MenuItem selectMenu = MenuItem.fromCode(code);
 
-      if(selectMenu == null) {
+      if (selectMenu == null) {
         Menu.retry();
         continue;
       }

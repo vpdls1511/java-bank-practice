@@ -43,13 +43,13 @@ public class Menu {
   }
 
   public static void showAccounts(Account[] accounts) {
-    if(accounts.length <= 0) {
+    if (accounts.length <= 0) {
       System.out.println("보유하신 계좌 정보가 없습니다.");
       return;
     }
 
     System.out.println("보유하신 계좌 정보입니다.");
-    for(Account account : accounts) {
+    for (Account account : accounts) {
       System.out.println(account);
     }
   }

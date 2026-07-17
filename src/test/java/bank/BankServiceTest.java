@@ -9,6 +9,7 @@ import java.util.NoSuchElementException;
 import org.junit.jupiter.api.Test;
 
 class BankServiceTest {
+
   private final Account account = new Account("그린");
 
   private final BankService bankService = new BankService();

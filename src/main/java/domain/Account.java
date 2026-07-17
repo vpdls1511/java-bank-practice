@@ -3,6 +3,7 @@ package domain;
 import java.math.BigDecimal;
 
 public class Account {
+
   private final String name;
   private String accountNumber;
   private BigDecimal money;
