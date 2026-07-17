@@ -76,4 +76,16 @@ class BankServiceTest {
     assertThrows(IllegalArgumentException.class,
                  () -> bankService.withdraw(myAccount.getAccountNumber(), money + money));
   }
+
+  @Test
+  void getAllAccounts() {
+    bankService.createAccount("1");
+    bankService.createAccount("2");
+    bankService.createAccount("3");
+    bankService.createAccount("4");
+
+    Account[] accounts = bankService.getAllAccounts();
+
+    assertEquals(4, accounts.length);
+  }
 }

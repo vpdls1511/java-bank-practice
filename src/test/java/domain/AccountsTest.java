@@ -87,4 +87,16 @@ class AccountsTest {
     assertEquals(BigDecimal.valueOf(1000), existAccount.getMoney());
   }
 
+  @Test
+  void canGetAllAccounts() {
+    accounts.add(existAccount);
+    accounts.add(existAccount);
+    accounts.add(existAccount);
+    accounts.add(existAccount);
+
+    Account[] accounts1 = accounts.getAll();
+
+    assertEquals(4, accounts1.length);
+  }
+
 }
